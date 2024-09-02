@@ -168,6 +168,9 @@ require('lazy').setup({
     },
   },
 
+  -- WakaTime extension
+  { 'wakatime/vim-wakatime', lazy = false },
+
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
