@@ -6,6 +6,7 @@ vim.g.maplocalleader = ' '
 
 -- 4 spaces instead of indents
 vim.g.shiftwidth = 4
+vim.g.tabstop = 4
 vim.g.expandtab = true
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
@@ -342,6 +343,12 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
+  },
+
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -481,17 +488,9 @@ require('lazy').setup({
         clangd = {},
         hls = {},
         pylsp = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
+        html = {},
+        tailwindcss = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
 
         lua_ls = {
           -- cmd = {...},
@@ -559,7 +558,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, typescript = true, javascript = true, typescriptreact = true }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
