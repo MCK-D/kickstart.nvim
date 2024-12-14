@@ -159,6 +159,17 @@ require('lazy').setup({
   --  This is equivalent to:
   --    require('Comment').setup({})
 
+  -- [[ Copilot for the win ]]
+  {
+    'zbirenbaum/copilot.lua',
+    opts = {
+      suggestion = {
+        auto_trigger = true,
+      },
+    },
+    lazy = false,
+  },
+
   -- [[ "leader + /" to comment visual regions/lines ]]
   {
     'numToStr/Comment.nvim',
@@ -349,6 +360,12 @@ require('lazy').setup({
     opts = {},
   },
 
+  {
+    'mrcjkb/haskell-tools.nvim',
+    version = '^4', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -486,7 +503,6 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
-        hls = {},
         pylsp = {},
         html = {},
         tailwindcss = {},
