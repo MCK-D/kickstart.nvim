@@ -137,7 +137,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.hl.on_yank()
+    vim.highlight.on_yank()
   end,
 })
 
@@ -784,12 +784,6 @@ require('lazy').setup({
         -- you will need to read `:help ins-completion`
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
-        -- mapping = cmp.mapping.preset.insert { TODO:
-        --   -- Select the [n]ext item
-        --   ['<down>'] = cmp.mapping.select_next_item(),
-        --   -- Select the [p]revious item
-        --   ['<up>'] = cmp.mapping.select_prev_item(),
-        -- },
         --
         -- All presets have the following mappings:
         -- <tab>/<s-tab>: move to right/left of your snippet expansion
@@ -800,7 +794,12 @@ require('lazy').setup({
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
+        --   -- Select the [n]ext item
+        ['<down>'] = { 'select_next', 'fallback' },
+        --   -- Select the [p]revious item
+        ['<up>'] = { 'select_prev', 'fallback' },
 
+        ['<Enter>'] = { 'select_accept_and_enter', 'fallback' },
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
@@ -808,7 +807,6 @@ require('lazy').setup({
       -- Accept ([y]es) the completion.
       --  This will auto-import if your LSP supports it.
       --  This will expand snippets if the LSP sent a snippet.
-      -- ['<Enter>'] = cmp.mapping.confirm { select = true }, TODO:
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
