@@ -21,6 +21,10 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.expandtab = true
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
@@ -799,7 +803,7 @@ require('lazy').setup({
         --   -- Select the [p]revious item
         ['<up>'] = { 'select_prev', 'fallback' },
 
-        ['<Enter>'] = { 'select_accept_and_enter', 'fallback' },
+        ['<Enter>'] = { 'select_and_accept', 'fallback' },
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
