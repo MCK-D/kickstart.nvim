@@ -440,8 +440,8 @@ require('lazy').setup({
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-      { 'mason-org/mason.nvim', opts = {} },
-      'mason-org/mason-lspconfig.nvim',
+      { 'mason-org/mason.nvim', opts = {}, version = '^1.0.0' },
+      { 'mason-org/mason-lspconfig.nvim', version = '^1.0.0' },
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
@@ -784,11 +784,12 @@ require('lazy').setup({
         -- you will need to read `:help ins-completion`
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
-        mapping = cmp.mapping.preset.insert {
-          -- Select the [n]ext item
-          ['<down>'] = cmp.mapping.select_next_item(),
-          -- Select the [p]revious item
-          ['<up>'] = cmp.mapping.select_prev_item(),
+        -- mapping = cmp.mapping.preset.insert { TODO:
+        --   -- Select the [n]ext item
+        --   ['<down>'] = cmp.mapping.select_next_item(),
+        --   -- Select the [p]revious item
+        --   ['<up>'] = cmp.mapping.select_prev_item(),
+        -- },
         --
         -- All presets have the following mappings:
         -- <tab>/<s-tab>: move to right/left of your snippet expansion
@@ -807,7 +808,7 @@ require('lazy').setup({
       -- Accept ([y]es) the completion.
       --  This will auto-import if your LSP supports it.
       --  This will expand snippets if the LSP sent a snippet.
-      ['<Enter>'] = cmp.mapping.confirm { select = true },
+      -- ['<Enter>'] = cmp.mapping.confirm { select = true }, TODO:
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
@@ -1011,6 +1012,3 @@ require('lazy').setup({
     },
   },
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
